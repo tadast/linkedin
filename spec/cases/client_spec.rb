@@ -252,5 +252,11 @@ describe LinkedIn::Client do
       patent.date.should == Date.civil(y=2008,m=7,d=23)
     end
     
+    it "should retrieve main address from profile" do
+      stub_get("/v1/people/~", "profile_full.xml")
+
+      client.profile.main_address.should == "CO43SQ, Secret address, Disneyland"
+    end
+    
   end
 end
